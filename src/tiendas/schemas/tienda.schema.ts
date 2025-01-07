@@ -5,6 +5,8 @@ export type TiendaDocument = Tienda & Document;
 
 @Schema()
 export class Tienda {
+  _id: Types.ObjectId; 
+  
   @Prop({ required: true })
   nombre: string;
 
@@ -15,7 +17,7 @@ export class Tienda {
   direccion: string;
 
   @Prop({ type: [{ type: Types.ObjectId, ref: 'Producto' }] })
-  productos: Types.ObjectId[];
+  productos: Types.ObjectId[];  
 }
 
 export const TiendaSchema = SchemaFactory.createForClass(Tienda);

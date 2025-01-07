@@ -8,6 +8,8 @@ export class CreateProductoDto {
   @IsNumber()
   precio: number;
 
-  @IsEnum(['Perecedero', 'No perecedero'])
+  @IsEnum(['Perecedero', 'No perecedero'], {
+    message: 'El tipo debe ser Perecedero o No perecedero',
+  })
   tipo: string;
 }
