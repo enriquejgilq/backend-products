@@ -1,0 +1,82 @@
+[{
+  "_id": {
+    "$oid": "677c9f032966488d510ecd80"
+  },
+  "nombre": "Tienda b",
+  "ciudad": "BOG",
+  "direccion": "Calle 123",
+  "productos": [
+    {
+      "$oid": "677d725e6f49cdaf4a6d01a5"
+    }
+  ],
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "677c9f092966488d510ecd82"
+  },
+  "nombre": "Tienda nueva ACTUALIZADA",
+  "ciudad": "BOG",
+  "direccion": "Calle 123",
+  "productos": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "677c9fe02966488d510ecd84"
+  },
+  "nombre": "Tienda A",
+  "ciudad": "BOG",
+  "direccion": "Calle 123",
+  "productos": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "677c9ff12966488d510ecd88"
+  },
+  "nombre": "Tienda C",
+  "ciudad": "BOG",
+  "direccion": "Calle 123",
+  "productos": [
+    {
+      "$oid": "677d754b389953e654a8873b"
+    }
+  ],
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "677d5650d6a6e07921060987"
+  },
+  "nombre": "Tienda A",
+  "ciudad": "BOG",
+  "direccion": "Calle 123",
+  "productos": [],
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "677d73006f49cdaf4a6d01ae"
+  },
+  "nombre": "Tienda A",
+  "ciudad": "BOG",
+  "direccion": "Calle 123",
+  "productos": [
+    {
+      "$oid": "677d754b389953e654a8873b"
+    }
+  ],
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "677df206e61c814420d1198c"
+  },
+  "nombre": "Tienda nueva",
+  "ciudad": "BOG",
+  "direccion": "Calle 123",
+  "productos": [],
+  "__v": 0
+}]

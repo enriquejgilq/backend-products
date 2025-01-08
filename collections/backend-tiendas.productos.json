@@ -1,0 +1,38 @@
+[{
+  "_id": {
+    "$oid": "677d725e6f49cdaf4a6d01a5"
+  },
+  "nombre": "Producto 3A111 ac",
+  "precio": 111,
+  "tipo": "Perecedero",
+  "tiendas": [
+    {
+      "$oid": "677c9f092966488d510ecd82"
+    }
+  ],
+  "__v": 5
+},
+{
+  "_id": {
+    "$oid": "677d754b389953e654a8873b"
+  },
+  "nombre": "Producto 2A ac",
+  "precio": 111,
+  "tipo": "No perecedero",
+  "tiendas": [
+    {
+      "$oid": "677d73006f49cdaf4a6d01ae"
+    }
+  ],
+  "__v": 5
+},
+{
+  "_id": {
+    "$oid": "677d7552389953e654a8873d"
+  },
+  "nombre": "Producto 3A ac",
+  "precio": 111,
+  "tipo": "No perecedero",
+  "tiendas": [],
+  "__v": 0
+}]
