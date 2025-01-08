@@ -24,26 +24,47 @@ export class TiendasService {
    async findAll(): Promise<Tienda[]> {
     return this.tiendaModel.find().exec();
   }
-
-   async findOne(id: string): Promise<Tienda> {
-    const tienda = await this.tiendaModel.findById(id).exec();
-    if (!tienda) {
-      throw new NotFoundException(`Tienda con ID ${id} no encontrada`);
+  async findOne(id: string): Promise<Tienda> {
+    try {
+      const tienda = await this.tiendaModel.findById(id).exec();
+      if (!tienda) {
+         throw new NotFoundException(`Tienda con ID ${id} no encontrada`);
+      }
+      return tienda;
+    } catch (error) {
+      if (error.name === 'CastError') {
+         throw new NotFoundException(`Tienda con ID ${id} no encontrada`);
+      }
+      throw error;  
     }
-    return tienda;
   }
 
-   async update(id: string, updateTiendaDto: UpdateTiendaDto): Promise<Tienda> {
-     if (updateTiendaDto.ciudad && !/^[A-Z]{3}$/.test(updateTiendaDto.ciudad)) {
-      throw new BadRequestException('La ciudad debe ser un código de tres caracteres en mayúsculas (e.g., "SMR", "BOG")');
+  async update(id: string, updateTiendaDto: UpdateTiendaDto): Promise<Tienda> {
+    try {
+       if (updateTiendaDto.ciudad && !/^[A-Z]{3}$/.test(updateTiendaDto.ciudad)) {
+        throw new BadRequestException(
+          'La ciudad debe ser un código de tres caracteres en mayúsculas (e.g., "SMR", "BOG")',
+        );
+      }
+  
+       const tienda = await this.tiendaModel
+        .findByIdAndUpdate(id, updateTiendaDto, { new: true })
+        .exec();
+  
+      if (!tienda) {
+         throw new NotFoundException(`Tienda con ID ${id} no encontrada`);
+      }
+  
+      return tienda;
+    } catch (error) {
+       if (error.name === 'CastError') {
+        throw new NotFoundException(`Tienda con ID ${id} no encontrada`);
+      }
+  
+       throw error;
     }
-
-    const tienda = await this.tiendaModel.findByIdAndUpdate(id, updateTiendaDto, { new: true }).exec();
-    if (!tienda) {
-      throw new NotFoundException(`Tienda con ID ${id} no encontrada`);
-    }
-    return tienda;
   }
+  
 
    async remove(id: string): Promise<Tienda> {
     const tienda = await this.tiendaModel.findByIdAndDelete(id).exec();

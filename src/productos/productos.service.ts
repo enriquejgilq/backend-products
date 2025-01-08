@@ -125,20 +125,26 @@ export class ProductosService {
   }
 
   async deleteStoreFromProduct(productId: string, storeId: string): Promise<Producto> {
-    const producto = await this.productoModel.findById(productId);
-    const tienda = await this.tiendaModel.findById(storeId);
+    const productObjectId = new Types.ObjectId(productId);
+    const storeObjectId = new Types.ObjectId(storeId);
 
-    if (!producto || !tienda) {
-      throw new NotFoundException('Producto o tienda no encontrado');
+     const product = await this.productoModel.findById(productObjectId).exec();
+    if (!product) {
+      throw new NotFoundException(`Producto con ID ${productId} no encontrado`);
     }
 
-     producto.tiendas = producto.tiendas.filter((id) => id.toString() !== storeId);
+     const storeIndex = product.tiendas.indexOf(storeObjectId);
+    if (storeIndex === -1) {
+      throw new NotFoundException(`Tienda con ID ${storeId} no está asociada al producto`);
+    }
 
-     tienda.productos = tienda.productos.filter((id) => id.toString() !== productId);
+     product.tiendas.splice(storeIndex, 1);
+    
+     await product.save();
 
-    await tienda.save();
-    return producto.save();
+    return product; 
   }
+ 
 
   async delete(id: string): Promise<ProductoDocument | null> {
     const deletedProducto = await this.productoModel.findByIdAndDelete(id).exec();
